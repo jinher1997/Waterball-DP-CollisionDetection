@@ -1,0 +1,7 @@
+﻿namespace Collision
+{
+    class Program
+    {
+        
+    }
+}
