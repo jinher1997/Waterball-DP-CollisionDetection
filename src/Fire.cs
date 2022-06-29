@@ -1,6 +1,6 @@
-namespace Collision.src
+namespace Collision
 {
-    public class Fire
+    public class Fire : Sprite
     {
         
     }

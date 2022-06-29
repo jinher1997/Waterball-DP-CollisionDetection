@@ -1,6 +1,6 @@
 namespace Collision.src
 {
-    public class Water
+    public class Water : Sprite
     {
         
     }
