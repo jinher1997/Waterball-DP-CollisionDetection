@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            new World();
+            var world = new World();
+            Console.WriteLine(world.ToString());
         }
     }
 }

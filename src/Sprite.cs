@@ -1,10 +1,12 @@
+using System;
 namespace Collision
 {
-    public class Sprite
+    public abstract class Sprite
     {
         public void Move()
         {
             
         }
+        public abstract override string ToString();
     }
 }
