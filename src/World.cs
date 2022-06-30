@@ -1,16 +1,38 @@
 using System.Text;
 namespace Collision
 {
-    public class World
+    public partial class World
     {
         private Random random = new Random();
         private Object[] worldSpace = new Object[30];
         Sprite[] sprites = new Sprite[10];
-        public World()
+        private CollisionHandler collisionHandler;
+        public World(CollisionHandler collisionHandler)
         {
+            this.collisionHandler = collisionHandler;
             InitialSprites();
             SetSpriteAtRandomPosition();
         }
+
+        public void Move(int x1, int x2)
+        {
+            ValidateMove(x1, x2);
+        }
+
+        private void ValidateMove(int x1, int x2)
+        {
+            if (worldSpace[x1] is null) return;
+            if (worldSpace[x2] is null)
+            //swap the two objects
+            {
+                var temp = worldSpace[x1];
+                worldSpace[x2] = temp;
+                worldSpace[x1] = null;
+            }
+            if (worldSpace[x1] is Sprite) collisionHandler.HandleResult(ref worldSpace[x1], ref worldSpace[x2]);
+        }
+
+
 
         void InitialSprites()
         {

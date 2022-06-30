@@ -4,8 +4,11 @@
     {
         static void Main(string[] args)
         {
-            var world = new World();
+            CollisionHandler collisionHandler = new FireCollisionHandler(null);
+            var world = new World(collisionHandler);
             Console.WriteLine(world.ToString());
+            world.Move(0, 1);
+             Console.WriteLine(world.ToString());
         }
     }
 }
