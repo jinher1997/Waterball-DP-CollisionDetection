@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            CollisionHandler collisionHandler = new FireCollisionHandler(null);
+            CollisionHandler collisionHandler = new FireHeroCollisionHandler(null);
             var world = new World(collisionHandler);
             Console.WriteLine(world.ToString());
             world.Move(0, 1);

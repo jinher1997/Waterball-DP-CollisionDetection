@@ -11,18 +11,46 @@ namespace Collision
     }
 
 
-
-
-    public class FireCollisionHandler : CollisionHandler
+    public class SameCollisionHandler : CollisionHandler
     {
-        public FireCollisionHandler(CollisionHandler next) : base(next)
+        public SameCollisionHandler(CollisionHandler next) : base(next)
+        {
+            this.next = next;
+        }
+        public override void HandleResult(ref object x1, ref object x2)
+        {
+            if (x1.GetType() == x2.GetType())
+            {
+                Console.WriteLine("Move failed");
+            }
+            else
+            {
+                next.HandleResult(ref x1, ref x2);
+            }
+        }
+    }
+
+
+    public class FireHeroCollisionHandler : CollisionHandler
+    {
+        public FireHeroCollisionHandler(CollisionHandler next) : base(next)
         {
             this.next = next;
         }
 
         public override void HandleResult(ref object x1, ref object x2)
         {
-            throw new NotImplementedException();
+            
+            if(x1 is Fire && x2 is Hero)
+            {
+                x1 = null;
+                x1 = x2;
+                // (Hero)x1
+            }
+            else
+            {
+                next.HandleResult(ref x1, ref x2);
+            }
         }
     }
 
